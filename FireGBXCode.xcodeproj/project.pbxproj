@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0121D84F17D8FFE700657644 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0121D84E17D8FFE700657644 /* Cocoa.framework */; };
+		0121D85117D8FFF500657644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0121D85017D8FFF500657644 /* Foundation.framework */; };
+		0E005245191545DE00B4D75B /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E005244191545DE00B4D75B /* SDL.framework */; };
+		0E005254191550B500B4D75B /* CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005246191550B500B4D75B /* CPU.cpp */; };
+		0E005255191550B500B4D75B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005249191550B500B4D75B /* main.cpp */; };
+		0E005256191550B500B4D75B /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E00524B191550B500B4D75B /* Memory.cpp */; };
+		0E005257191550B500B4D75B /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E00524F191550B500B4D75B /* SDLMain.m */; };
+		0E005258191550B500B4D75B /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005250191550B500B4D75B /* Sound.cpp */; };
+		0E005259191550B500B4D75B /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005252191550B500B4D75B /* Video.cpp */; };
+		0E9B833917FDD79700FDD16A /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9B833817FDD79700FDD16A /* SDL_mixer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0121D83A17D8FEC000657644 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0121D83C17D8FEC000657644 /* GB Emulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "GB Emulator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0121D84E17D8FFE700657644 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0121D85017D8FFF500657644 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0E005244191545DE00B4D75B /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
+		0E005246191550B500B4D75B /* CPU.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = CPU.cpp; path = "Source Code/CPU.cpp"; sourceTree = SOURCE_ROOT; };
+		0E005247191550B500B4D75B /* CPU.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = CPU.h; path = "Source Code/CPU.h"; sourceTree = SOURCE_ROOT; };
+		0E005249191550B500B4D75B /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = main.cpp; path = "Source Code/main.cpp"; sourceTree = SOURCE_ROOT; };
+		0E00524A191550B500B4D75B /* main.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = main.h; path = "Source Code/main.h"; sourceTree = SOURCE_ROOT; };
+		0E00524B191550B500B4D75B /* Memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Memory.cpp; path = "Source Code/Memory.cpp"; sourceTree = SOURCE_ROOT; };
+		0E00524C191550B500B4D75B /* Memory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Memory.h; path = "Source Code/Memory.h"; sourceTree = SOURCE_ROOT; };
+		0E00524D191550B500B4D75B /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Source Code/SDLMain.h"; sourceTree = SOURCE_ROOT; };
+		0E00524F191550B500B4D75B /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "Source Code/SDLMain.m"; sourceTree = SOURCE_ROOT; };
+		0E005250191550B500B4D75B /* Sound.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Sound.cpp; path = "Source Code/Sound.cpp"; sourceTree = SOURCE_ROOT; };
+		0E005251191550B500B4D75B /* Sound.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Sound.h; path = "Source Code/Sound.h"; sourceTree = SOURCE_ROOT; };
+		0E005252191550B500B4D75B /* Video.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Video.cpp; path = "Source Code/Video.cpp"; sourceTree = SOURCE_ROOT; };
+		0E005253191550B500B4D75B /* Video.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Video.h; path = "Source Code/Video.h"; sourceTree = SOURCE_ROOT; };
+		0E9B833817FDD79700FDD16A /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = ../../../../Library/Frameworks/SDL_mixer.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0121D83917D8FEC000657644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E9B833917FDD79700FDD16A /* SDL_mixer.framework in Frameworks */,
+				0121D85117D8FFF500657644 /* Foundation.framework in Frameworks */,
+				0E005245191545DE00B4D75B /* SDL.framework in Frameworks */,
+				0121D84F17D8FFE700657644 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0121D83117D8FEC000657644 = {
+			isa = PBXGroup;
+			children = (
+				0E9B833817FDD79700FDD16A /* SDL_mixer.framework */,
+				0121D85017D8FFF500657644 /* Foundation.framework */,
+				0121D84E17D8FFE700657644 /* Cocoa.framework */,
+				0121D83F17D8FEC000657644 /* Source Code */,
+				0121D83D17D8FEC000657644 /* Products */,
+				0E005244191545DE00B4D75B /* SDL.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		0121D83D17D8FEC000657644 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0121D83C17D8FEC000657644 /* GB Emulator */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0121D83F17D8FEC000657644 /* Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				0E005246191550B500B4D75B /* CPU.cpp */,
+				0E005247191550B500B4D75B /* CPU.h */,
+				0E005249191550B500B4D75B /* main.cpp */,
+				0E00524A191550B500B4D75B /* main.h */,
+				0E00524B191550B500B4D75B /* Memory.cpp */,
+				0E00524C191550B500B4D75B /* Memory.h */,
+				0E00524D191550B500B4D75B /* SDLMain.h */,
+				0E00524F191550B500B4D75B /* SDLMain.m */,
+				0E005250191550B500B4D75B /* Sound.cpp */,
+				0E005251191550B500B4D75B /* Sound.h */,
+				0E005252191550B500B4D75B /* Video.cpp */,
+				0E005253191550B500B4D75B /* Video.h */,
+			);
+			name = "Source Code";
+			path = "GB Emulator";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0121D83B17D8FEC000657644 /* GB Emulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0121D84617D8FEC000657644 /* Build configuration list for PBXNativeTarget "GB Emulator" */;
+			buildPhases = (
+				0121D83817D8FEC000657644 /* Sources */,
+				0121D83917D8FEC000657644 /* Frameworks */,
+				0121D83A17D8FEC000657644 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GB Emulator";
+			productName = "GB Emulator";
+			productReference = 0121D83C17D8FEC000657644 /* GB Emulator */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0121D83317D8FEC000657644 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 0121D83617D8FEC000657644 /* Build configuration list for PBXProject "FireGBXCode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0121D83117D8FEC000657644;
+			productRefGroup = 0121D83D17D8FEC000657644 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0121D83B17D8FEC000657644 /* GB Emulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0121D83817D8FEC000657644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E005257191550B500B4D75B /* SDLMain.m in Sources */,
+				0E005256191550B500B4D75B /* Memory.cpp in Sources */,
+				0E005255191550B500B4D75B /* main.cpp in Sources */,
+				0E005254191550B500B4D75B /* CPU.cpp in Sources */,
+				0E005258191550B500B4D75B /* Sound.cpp in Sources */,
+				0E005259191550B500B4D75B /* Video.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0121D84417D8FEC000657644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0121D84517D8FEC000657644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0121D84717D8FEC000657644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/local/lib/;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lSDL_gfx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0121D84817D8FEC000657644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/local/lib/;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lSDL_gfx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0121D83617D8FEC000657644 /* Build configuration list for PBXProject "FireGBXCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0121D84417D8FEC000657644 /* Debug */,
+				0121D84517D8FEC000657644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0121D84617D8FEC000657644 /* Build configuration list for PBXNativeTarget "GB Emulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0121D84717D8FEC000657644 /* Debug */,
+				0121D84817D8FEC000657644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0121D83317D8FEC000657644 /* Project object */;
+}
