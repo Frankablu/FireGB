@@ -44,7 +44,11 @@ extern "C" {
 #define M_PI	3.141592654
 #endif
 
+#ifdef __APPLE__
+#include "SDL/SDL.h"
+#else
 #include "SDL.h"
+#endif
 
 	/* ---- Defines */
 

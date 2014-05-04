@@ -10,13 +10,14 @@
 		0121D84F17D8FFE700657644 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0121D84E17D8FFE700657644 /* Cocoa.framework */; };
 		0121D85117D8FFF500657644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0121D85017D8FFF500657644 /* Foundation.framework */; };
 		0E005245191545DE00B4D75B /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E005244191545DE00B4D75B /* SDL.framework */; };
-		0E005254191550B500B4D75B /* CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005246191550B500B4D75B /* CPU.cpp */; };
-		0E005255191550B500B4D75B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005249191550B500B4D75B /* main.cpp */; };
-		0E005256191550B500B4D75B /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E00524B191550B500B4D75B /* Memory.cpp */; };
-		0E005257191550B500B4D75B /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E00524F191550B500B4D75B /* SDLMain.m */; };
-		0E005258191550B500B4D75B /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005250191550B500B4D75B /* Sound.cpp */; };
-		0E005259191550B500B4D75B /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E005252191550B500B4D75B /* Video.cpp */; };
 		0E9B833917FDD79700FDD16A /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9B833817FDD79700FDD16A /* SDL_mixer.framework */; };
+		0EF6B05719168C7E0081DFB1 /* CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B04719168C7E0081DFB1 /* CPU.cpp */; };
+		0EF6B05819168C7E0081DFB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B04A19168C7E0081DFB1 /* main.cpp */; };
+		0EF6B05919168C7E0081DFB1 /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B04C19168C7E0081DFB1 /* Memory.cpp */; };
+		0EF6B05A19168C7E0081DFB1 /* SDL_rotozoomALT.c in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B04E19168C7E0081DFB1 /* SDL_rotozoomALT.c */; };
+		0EF6B05B19168C7E0081DFB1 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B05219168C7E0081DFB1 /* SDLMain.m */; };
+		0EF6B05C19168C7E0081DFB1 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B05319168C7E0081DFB1 /* Sound.cpp */; };
+		0EF6B05D19168C7E0081DFB1 /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EF6B05519168C7E0081DFB1 /* Video.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,19 +37,23 @@
 		0121D84E17D8FFE700657644 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0121D85017D8FFF500657644 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0E005244191545DE00B4D75B /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
-		0E005246191550B500B4D75B /* CPU.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = CPU.cpp; path = "Source Code/CPU.cpp"; sourceTree = SOURCE_ROOT; };
-		0E005247191550B500B4D75B /* CPU.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = CPU.h; path = "Source Code/CPU.h"; sourceTree = SOURCE_ROOT; };
-		0E005249191550B500B4D75B /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = main.cpp; path = "Source Code/main.cpp"; sourceTree = SOURCE_ROOT; };
-		0E00524A191550B500B4D75B /* main.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = main.h; path = "Source Code/main.h"; sourceTree = SOURCE_ROOT; };
-		0E00524B191550B500B4D75B /* Memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Memory.cpp; path = "Source Code/Memory.cpp"; sourceTree = SOURCE_ROOT; };
-		0E00524C191550B500B4D75B /* Memory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Memory.h; path = "Source Code/Memory.h"; sourceTree = SOURCE_ROOT; };
-		0E00524D191550B500B4D75B /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Source Code/SDLMain.h"; sourceTree = SOURCE_ROOT; };
-		0E00524F191550B500B4D75B /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "Source Code/SDLMain.m"; sourceTree = SOURCE_ROOT; };
-		0E005250191550B500B4D75B /* Sound.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Sound.cpp; path = "Source Code/Sound.cpp"; sourceTree = SOURCE_ROOT; };
-		0E005251191550B500B4D75B /* Sound.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Sound.h; path = "Source Code/Sound.h"; sourceTree = SOURCE_ROOT; };
-		0E005252191550B500B4D75B /* Video.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Video.cpp; path = "Source Code/Video.cpp"; sourceTree = SOURCE_ROOT; };
-		0E005253191550B500B4D75B /* Video.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = Video.h; path = "Source Code/Video.h"; sourceTree = SOURCE_ROOT; };
 		0E9B833817FDD79700FDD16A /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = ../../../../Library/Frameworks/SDL_mixer.framework; sourceTree = "<group>"; };
+		0EF6B04719168C7E0081DFB1 /* CPU.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CPU.cpp; sourceTree = "<group>"; };
+		0EF6B04819168C7E0081DFB1 /* CPU.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CPU.h; sourceTree = "<group>"; };
+		0EF6B04919168C7E0081DFB1 /* GB_Emulator.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = GB_Emulator.1; sourceTree = "<group>"; };
+		0EF6B04A19168C7E0081DFB1 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.cpp; sourceTree = "<group>"; };
+		0EF6B04B19168C7E0081DFB1 /* main.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.h; sourceTree = "<group>"; };
+		0EF6B04C19168C7E0081DFB1 /* Memory.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Memory.cpp; sourceTree = "<group>"; };
+		0EF6B04D19168C7E0081DFB1 /* Memory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Memory.h; sourceTree = "<group>"; };
+		0EF6B04E19168C7E0081DFB1 /* SDL_rotozoomALT.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = SDL_rotozoomALT.c; sourceTree = "<group>"; };
+		0EF6B04F19168C7E0081DFB1 /* SDL_rotozoomALT.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = SDL_rotozoomALT.h; sourceTree = "<group>"; };
+		0EF6B05019168C7E0081DFB1 /* SDLMain.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = SDLMain.h; sourceTree = "<group>"; };
+		0EF6B05119168C7E0081DFB1 /* SDLMain.h.gch */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDLMain.h.gch; sourceTree = "<group>"; };
+		0EF6B05219168C7E0081DFB1 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
+		0EF6B05319168C7E0081DFB1 /* Sound.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Sound.cpp; sourceTree = "<group>"; };
+		0EF6B05419168C7E0081DFB1 /* Sound.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Sound.h; sourceTree = "<group>"; };
+		0EF6B05519168C7E0081DFB1 /* Video.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Video.cpp; sourceTree = "<group>"; };
+		0EF6B05619168C7E0081DFB1 /* Video.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Video.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +74,10 @@
 		0121D83117D8FEC000657644 = {
 			isa = PBXGroup;
 			children = (
+				0EF6B04619168C7E0081DFB1 /* Source */,
 				0E9B833817FDD79700FDD16A /* SDL_mixer.framework */,
 				0121D85017D8FFF500657644 /* Foundation.framework */,
 				0121D84E17D8FFE700657644 /* Cocoa.framework */,
-				0121D83F17D8FEC000657644 /* Source Code */,
 				0121D83D17D8FEC000657644 /* Products */,
 				0E005244191545DE00B4D75B /* SDL.framework */,
 			);
@@ -86,24 +91,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0121D83F17D8FEC000657644 /* Source Code */ = {
+		0EF6B04619168C7E0081DFB1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0E005246191550B500B4D75B /* CPU.cpp */,
-				0E005247191550B500B4D75B /* CPU.h */,
-				0E005249191550B500B4D75B /* main.cpp */,
-				0E00524A191550B500B4D75B /* main.h */,
-				0E00524B191550B500B4D75B /* Memory.cpp */,
-				0E00524C191550B500B4D75B /* Memory.h */,
-				0E00524D191550B500B4D75B /* SDLMain.h */,
-				0E00524F191550B500B4D75B /* SDLMain.m */,
-				0E005250191550B500B4D75B /* Sound.cpp */,
-				0E005251191550B500B4D75B /* Sound.h */,
-				0E005252191550B500B4D75B /* Video.cpp */,
-				0E005253191550B500B4D75B /* Video.h */,
+				0EF6B04719168C7E0081DFB1 /* CPU.cpp */,
+				0EF6B04819168C7E0081DFB1 /* CPU.h */,
+				0EF6B04919168C7E0081DFB1 /* GB_Emulator.1 */,
+				0EF6B04A19168C7E0081DFB1 /* main.cpp */,
+				0EF6B04B19168C7E0081DFB1 /* main.h */,
+				0EF6B04C19168C7E0081DFB1 /* Memory.cpp */,
+				0EF6B04D19168C7E0081DFB1 /* Memory.h */,
+				0EF6B04E19168C7E0081DFB1 /* SDL_rotozoomALT.c */,
+				0EF6B04F19168C7E0081DFB1 /* SDL_rotozoomALT.h */,
+				0EF6B05019168C7E0081DFB1 /* SDLMain.h */,
+				0EF6B05119168C7E0081DFB1 /* SDLMain.h.gch */,
+				0EF6B05219168C7E0081DFB1 /* SDLMain.m */,
+				0EF6B05319168C7E0081DFB1 /* Sound.cpp */,
+				0EF6B05419168C7E0081DFB1 /* Sound.h */,
+				0EF6B05519168C7E0081DFB1 /* Video.cpp */,
+				0EF6B05619168C7E0081DFB1 /* Video.h */,
 			);
-			name = "Source Code";
-			path = "GB Emulator";
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,12 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E005257191550B500B4D75B /* SDLMain.m in Sources */,
-				0E005256191550B500B4D75B /* Memory.cpp in Sources */,
-				0E005255191550B500B4D75B /* main.cpp in Sources */,
-				0E005254191550B500B4D75B /* CPU.cpp in Sources */,
-				0E005258191550B500B4D75B /* Sound.cpp in Sources */,
-				0E005259191550B500B4D75B /* Video.cpp in Sources */,
+				0EF6B05919168C7E0081DFB1 /* Memory.cpp in Sources */,
+				0EF6B05819168C7E0081DFB1 /* main.cpp in Sources */,
+				0EF6B05A19168C7E0081DFB1 /* SDL_rotozoomALT.c in Sources */,
+				0EF6B05719168C7E0081DFB1 /* CPU.cpp in Sources */,
+				0EF6B05B19168C7E0081DFB1 /* SDLMain.m in Sources */,
+				0EF6B05D19168C7E0081DFB1 /* Video.cpp in Sources */,
+				0EF6B05C19168C7E0081DFB1 /* Sound.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
