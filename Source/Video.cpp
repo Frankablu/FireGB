@@ -183,7 +183,7 @@ void Video::vSync()
     }
     
     //Effectively a VSync with the computer screen
-	std::cout << std::dec << "Current Tick! " << SDL_GetTicks() << std::endl;
+	//std::cout << std::dec << "Current Tick! " << SDL_GetTicks() << std::endl;
     SDL_Flip(screen);
 }
 

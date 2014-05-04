@@ -307,11 +307,19 @@ void Sound::updateSound()
         {
             //Addition
             Sound1FrequencyReal += Sound1FrequencyReal / pow(2.0,Sound1CurrentSweepShift);
+            if (Sound1FrequencyReal > 131000) //Exceed Max Frequency
+            {
+                Sound1InternalOn = 0;
+            }
         }
         else
         {
             //Subtraction
             Sound1FrequencyReal -= Sound1FrequencyReal / pow(2.0,Sound1CurrentSweepShift);
+            if (Sound1FrequencyReal < 64) //Min Frequency
+            {
+                Sound1FrequencyReal = 64;
+            }
         }
     }
     
