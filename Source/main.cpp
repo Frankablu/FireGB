@@ -12,6 +12,7 @@ CPU ourCPU;
 Video ourVideo;
 Sound ourSound;
 Memory ourMemory;
+Menu ourMenu;
 
 extern int audioMute;
 
@@ -19,23 +20,28 @@ long currentTick = 0;
 long tick = 0;
 int lastplace = 0;
 
-std::string romFileName;
-
-#ifdef defined(_WIN32)
-int SDL_main(int argc, char *argv[])
-#else
+#ifndef __APPLE__
+#ifndef _WIN32
 int main(int argc, char* argv[])
+{
+    SDL_main(argc, argv);
+}
 #endif
+#endif
+
+int SDL_main(int argc, char* argv[])
 {
     SDL_Init( SDL_INIT_EVERYTHING );
     atexit(SDL_Quit);
-
+    
+    std::string romFileName;
+    
     if (argc > 1)
     {
         romFileName = std::string(argv[1]);
     }
     
-    std::cout << "FireGB Emulator v0.9" << std::endl;
+    std::cout << "FireGB Emulator v1.0" << std::endl;
     std::cout << "Usage fgb romName" << std::endl;
     std::cout << "Keys:" << std::endl << "Arrow Keys" << std::endl << "A: Z "<< std::endl << "B: X" << std::endl;
     std::cout << "Start: Enter, A" << std::endl << "Select: Backspace, S" << std::endl;
@@ -48,7 +54,6 @@ int main(int argc, char* argv[])
     ourCPU.loadrom(romFileName);
     ourCPU.resetCPU();
     
-    ourSound.startSound();
     ourVideo.startScreen();
     
     std::string windowTitle;
@@ -56,16 +61,26 @@ int main(int argc, char* argv[])
     windowTitle.append(romFileName);
     windowTitle.at(windowTitle.size()-3) = '\0';
     
-    SDL_WM_SetCaption(windowTitle.c_str(), windowTitle.c_str());
+    SDL_SetWindowTitle(ourVideo.screenwindow,windowTitle.c_str());
     
     int running = 1;
+    
+    ourMenu.load();
     
     while (running)
     {
         currentTick = SDL_GetTicks();
         
-        ourCPU.cpucycle(); //Blocks until Gameboy VSync
-        
+        if (ourMemory.ready) //Is a gameboy rom loaded?
+        {
+            ourCPU.cpucycle(); //Blocks until Gameboy VSync
+            ourMemory.saveRAM(); //Create a save file
+        }
+        else
+        {
+            ourVideo.vSync(); //cpucycle calls this automatically when a rom is loaded
+        }
+            
         //Keyboard Input
         SDL_Event event;
         while(SDL_PollEvent(&event))
@@ -76,11 +91,16 @@ int main(int argc, char* argv[])
                 case SDL_QUIT:
                     running = 0;
                     break;
+                
+                case SDL_MOUSEBUTTONDOWN:
+                    ourMenu.mouseClick((SDL_MouseButtonEvent*)&event);
+                    break;
                     
                 case SDL_KEYDOWN:
                     
                     switch( event.key.keysym.sym )
                 {
+                        
                     case SDLK_LEFT:
                         ourCPU.keyLeft = 0;
                         ourCPU.stop = 0;
@@ -119,7 +139,7 @@ int main(int argc, char* argv[])
                         
                     case SDLK_0:
                         ourVideo.scale = 0;
-                        ourVideo.resizeScreen(1024, 800);
+                        ourVideo.resizeScreen(1024, 768);
                         break;
                         
                     case SDLK_1:
@@ -252,9 +272,9 @@ int main(int argc, char* argv[])
             }
         }
         
-        ourMemory.saveRAM(); //Create a save file
     }
     
+    TTF_Quit();
     SDL_Quit();
     
     return 0;

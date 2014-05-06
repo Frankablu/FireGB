@@ -13,7 +13,6 @@ extern CPU ourCPU;
 extern Video ourVideo;
 extern Sound ourSound;
 extern long tick;
-extern std::string romFileName;
 
 void Memory::setValue(unsigned int address, unsigned char value)
 {
@@ -164,7 +163,6 @@ void Memory::setValue(unsigned int address, unsigned char value)
         //exit(1);
     }
     
-    int memcopy;
     switch (address)
     {
             //Joypad Info - Set mode
@@ -459,13 +457,15 @@ unsigned char Memory::getValue2(unsigned short address)
     }
 }
 
-void Memory::loadrom(std::string romname)
+void Memory::loadrom(std::string romFileName)
 {
     
     for (int i = 0; i < 0xFFFF; i++)
     {
         Mem[i] = 0; //Blank Memory
     }
+    
+    saveFileName = "";
     
     //Save file name - Remove .gb add .sav
     for (int i = 0; i < romFileName.size(); i++)
@@ -484,12 +484,13 @@ void Memory::loadrom(std::string romname)
     
     //Rom Loading
     FILE * romFile;
-    romFile = fopen (romname.c_str(),"r");
+    romFile = fopen (romFileName.c_str(),"r");
     
     if (romFile == NULL)
     {
-        std::cout << "Can't find ROM file!" << std::endl;
-        exit(1);
+        std::cout << "No Rom File Selected" << std::endl;
+        ready = 0;
+        return;
     }
 
         fseek (romFile, 0 , SEEK_END);
@@ -497,7 +498,11 @@ void Memory::loadrom(std::string romname)
         rewind (romFile);
         
         maxBank = fileSize / 16383;
-        
+    
+        if (ROMMemory != NULL)
+        {
+            free(ROMMemory);
+        }
         ROMMemory = (unsigned char*)malloc(sizeof(char) * fileSize);
         for (int i = 0; i < fileSize; i++)
         {
@@ -548,6 +553,9 @@ void Memory::loadrom(std::string romname)
         fread((void*)RAM, 1, 0x8000,ramFile);
         fclose(ramFile);
     }
+    
+    ready = 1;
+    ourSound.startSound();
 }
 
 
@@ -564,6 +572,8 @@ void Memory::dec(unsigned int address)
 Memory::Memory()
 {
     ramWrite = 0;
+    ready = 0;
+    ROMMemory = NULL;
 }
 
 void Memory::saveRAM()

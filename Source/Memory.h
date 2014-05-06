@@ -37,7 +37,7 @@ public:
     Memory();
     
     unsigned char Mem[0xFFFF + 2];
-    void loadrom(std::string romname);
+    void loadrom(std::string romFileName);
     unsigned char getValue(unsigned short address);
     void setValue(unsigned int address, unsigned char value);
     void inc(unsigned int address);
@@ -51,6 +51,7 @@ public:
     
     void saveRAM();
     
+    int ready;
     
 };
 

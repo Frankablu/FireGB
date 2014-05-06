@@ -10,22 +10,27 @@
 #define GB_Emulator_main_h
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
 #ifdef __APPLE__
-#include <SDL/SDL.h>
-#include "SDL_rotozoomALT.h"
-#include <SDL/SDL_audio.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
 #include "SDLMain.h"
+#include <SDL_ttf.h>
 #else
 #include <SDL.h>
-#include "SDL_rotozoomALT.h"
 #include <SDL_audio.h>
+#include <SDL_ttf.h>
 #endif
 
+#include "SDL2_rotozoomALT.h"
 #include "Video.h"
 #include "Memory.h"
 #include "CPU.h"
 #include "Sound.h"
+#include "Menu.h"
 
 #define KEYUP 4
 #define KEYDOWN 8

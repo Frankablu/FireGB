@@ -21,6 +21,9 @@
 extern CPU ourCPU;
 extern long tick;
 extern Memory ourMemory;
+extern Menu ourMenu;
+
+//extern TTF_Font *font;
 
 Video::Video()
 {
@@ -39,11 +42,13 @@ void Video::resizeScreen(int x, int y)
 {
     if (fullscreen)
     {
-        screen = SDL_SetVideoMode(x, y, 16, SDL_FULLSCREEN|SDL_HWSURFACE|SDL_DOUBLEBUF);
+        SDL_SetWindowFullscreen( screenwindow, SDL_WINDOW_FULLSCREEN_DESKTOP );
+        SDL_SetWindowSize(screenwindow,x, y);
     }
     else
     {
-        screen = SDL_SetVideoMode(x, y, 16, SDL_HWSURFACE|SDL_DOUBLEBUF);
+        SDL_SetWindowFullscreen( screenwindow, 0 );
+        SDL_SetWindowSize(screenwindow,x, y);
     }
 }
 
@@ -55,53 +60,60 @@ void Video::resetFramerate()
 
 void Video::startScreen()
 {
-    screen = SDL_SetVideoMode(160*4, 144*4, 16, SDL_HWSURFACE|SDL_DOUBLEBUF);
+    screenwindow = SDL_CreateWindow("FireGB",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED, 160*4, 144*4,SDL_WINDOW_RESIZABLE);
+    renderer = SDL_CreateRenderer(screenwindow, -1, 0);
+    screenTexture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, 160*4, 144*4);
+    screenTextureAdvanced = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, 1024, 768);
+    
+    SDL_RenderSetLogicalSize(renderer, 160*4, 144*4);
+    screen = SDL_CreateRGBSurface(0, 160*4, 144*4, 32, 0, 0, 0, 0);
+    screenAdvanced = SDL_CreateRGBSurface(0, 1024, 768, 32, 0, 0, 0, 0);
     vRam = SDL_CreateRGBSurfaceFrom(vRamData, 8, 384*4*8*8, 8*4, 4*8,0,0,0,0);
     vRamO1 = SDL_CreateRGBSurfaceFrom(vRamDataO1, 8, 384*4*8*8, 8*4, 4*8,0,0,0,0);
     vRamO2 = SDL_CreateRGBSurfaceFrom(vRamDataO2, 8, 384*4*8*8, 8*4, 4*8,0,0,0,0);
-    backgroundScreen = SDL_CreateRGBSurface(SDL_HWSURFACE, 255*2, 255*2, 32, 0, 0, 0, 0);
-    windowScreen = SDL_CreateRGBSurface(SDL_HWSURFACE, 255, 255, 32, 0, 0, 0, 0);
-    spriteScreen = SDL_CreateRGBSurface(SDL_HWSURFACE, 255, 255, 32, 0, 0, 0, 0);
-    tempFlip = SDL_CreateRGBSurface(SDL_HWSURFACE, 16, 16, 32, 0, 0, 0, 0);
-    gameboyScreen = SDL_CreateRGBSurface(SDL_HWSURFACE, 160, 144, 32, 0, 0, 0, 0);
-	
-	for (int scaleS = 0; scaleS < 9; scaleS++)
-	{
-		gameboyScreenScaled[scaleS] = SDL_CreateRGBSurface(SDL_HWSURFACE, 160*scaleS, 144*scaleS, 32, 0, 0, 0, 0);
-	}
+    backgroundScreen = SDL_CreateRGBSurface(0, 255*2, 255*2, 32, 0, 0, 0, 0);
+    windowScreen = SDL_CreateRGBSurface(0, 255, 255, 32, 0, 0, 0, 0);
+    spriteScreen = SDL_CreateRGBSurface(0, 255, 255, 32, 0, 0, 0, 0);
+    tempFlip = SDL_CreateRGBSurface(0, 16, 16, 32, 0, 0, 0, 0);
+    gameboyScreen = SDL_CreateRGBSurface(0, 160, 144, 32, 0, 0, 0, 0);
+    gameboyScreenScaled = SDL_CreateRGBSurface(0, 160*4, 144*4, 32, 0, 0, 0, 0);
     
-    SDL_SetColorKey(spriteScreen, SDL_SRCCOLORKEY, SDL_MapRGB(spriteScreen->format, 255, 0, 255));
-    SDL_SetColorKey(vRamO1, SDL_SRCCOLORKEY, SDL_MapRGB(vRamO1->format, 255, 0, 255));
-    SDL_SetColorKey(vRamO2, SDL_SRCCOLORKEY, SDL_MapRGB(vRamO2->format, 255, 0, 255));
-        
+    SDL_SetColorKey(spriteScreen, SDL_TRUE, SDL_MapRGB(spriteScreen->format, 255, 0, 255));
+    SDL_SetColorKey(vRamO1, SDL_TRUE, SDL_MapRGB(vRamO1->format, 255, 0, 255));
+    SDL_SetColorKey(vRamO2, SDL_TRUE, SDL_MapRGB(vRamO2->format, 255, 0, 255));
+    
     windowPositionX = 0;
     windowPositionY = 0;
     scale = 4;
     speedUp = 0;
     fullscreen = 0;
-
+    
 	frameNumber = 0;
 	startGameTime = SDL_GetTicks();
 	overSpeed = 0;
-
+    
 	speeding = 0;
 }
 
 void Video::vSync()
 {
+    
 	//Better Frame Rate Control
 	if (!speedUp)
 	{
 		frameNumber++;
 		long currentTick = SDL_GetTicks();
-	
+        
 		while (currentTick < startGameTime + frameNumber*17) //Too fast!
 		{
-			SDL_Flip(screen);
+			//SDL_RenderClear(renderer);
+            //SDL_RenderCopy(renderer, screenTexture, NULL, NULL);
+            //SDL_RenderPresent(renderer);
+            
 			currentTick = SDL_GetTicks();
 			overSpeed = 1;
 		}
-	
+        
 		if (!overSpeed) //Too slow
 		{
 			if (currentTick - startGameTime + frameNumber*17 > 17)
@@ -110,7 +122,7 @@ void Video::vSync()
 			}
 		}
 	}
-
+    
     //x5 Speed Mode - Spacebar
     if (speedUp)
     {
@@ -131,60 +143,82 @@ void Video::vSync()
     {
         if (LCDenabled)
         {
-        src.x = 0; src.y = 0;
-        src.w = 8; src.h = 800;
+            src.x = 0; src.y = 0;
+            src.w = 8; src.h = 800;
+            
+            dst.x = 0; dst.y = 0;
+            dst.w = 8; dst.h = 800;
+            
+            //Blit VRAM
+            SDL_BlitSurface(vRam, &src, screenAdvanced, &dst);
+            src.y = 800;
+            dst.x = 8;
+            SDL_BlitSurface(vRam, &src, screenAdvanced, &dst);
+            
+            //Blit Background VRAM
+            src.x = 0; src.y = 0;
+            src.w = 255; src.h = 255;
+            dst.x = 40; dst.y = 0;
+            dst.w = 255; dst.h = 255;
+            SDL_BlitSurface(backgroundScreen,&src,screenAdvanced,&dst);
+            
+            //Blit Window VRAM
+            src.x = 0; src.y = 0;
+            src.w = 255; src.h = 255;
+            dst.x = 300; dst.y = 0;
+            dst.w = 255; dst.h = 255;
+            SDL_BlitSurface(windowScreen,&src,screenAdvanced,&dst);
+        }
         
-        dst.x = 0; dst.y = 0;
-        dst.w = 8; dst.h = 800;
-        
-        //Blit VRAM
-        SDL_BlitSurface(vRam, &src, screen, &dst);
-        src.y = 800;
-        dst.x = 8;
-        SDL_BlitSurface(vRam, &src, screen, &dst);
-        
-        //Blit Background VRAM
+        //Blit Sprite VRAM
         src.x = 0; src.y = 0;
         src.w = 255; src.h = 255;
-        dst.x = 40; dst.y = 0;
+        dst.x = 600; dst.y = 0;
         dst.w = 255; dst.h = 255;
-        SDL_BlitSurface(backgroundScreen,&src,screen,&dst);
         
-        //Blit Window VRAM
+        SDL_FillRect(screenAdvanced, &dst, SDL_MapRGB(spriteScreen->format, 0, 0, 0));
+        SDL_BlitSurface(spriteScreen,&src,screenAdvanced,&dst);
+        
+        //Blit Gameboy Screen
         src.x = 0; src.y = 0;
-        src.w = 255; src.h = 255;
-        dst.x = 300; dst.y = 0;
-        dst.w = 255; dst.h = 255;
-        SDL_BlitSurface(windowScreen,&src,screen,&dst);
-    }
+        src.w = 160; src.h = 144;
+        dst.x = 300; dst.y = 300;
+        dst.w = 160; dst.h = 144;
+        SDL_BlitSurface(gameboyScreen,&src,screenAdvanced,&dst);
         
-    //Blit Sprite VRAM
-    src.x = 0; src.y = 0;
-    src.w = 255; src.h = 255;
-    dst.x = 600; dst.y = 0;
-    dst.w = 255; dst.h = 255;
+        ourMenu.displayMenu(screenAdvanced);
+        src.x = 0; src.y = 0;
+        src.w = 1024; src.h = 768;
         
-    SDL_FillRect(screen, &dst, SDL_MapRGB(spriteScreen->format, 0, 0, 0));
-    SDL_BlitSurface(spriteScreen,&src,screen,&dst);
+        SDL_RenderSetLogicalSize(renderer, 1024, 768);
         
-    //Blit Gameboy Screen
-    src.x = 0; src.y = 0;
-    src.w = 160; src.h = 144;
-    dst.x = 300; dst.y = 300;
-    dst.w = 160; dst.h = 144;
-    SDL_BlitSurface(gameboyScreen,&src,screen,&dst);
+        //Effectively a VSync with the computer screen
+        SDL_UpdateTexture(screenTextureAdvanced, &src, screenAdvanced->pixels, 1024 * sizeof (Uint32));
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, screenTextureAdvanced, NULL, NULL);
+        SDL_RenderPresent(renderer);
         
     }
     else
     {
-        //Blit Scaled Gameboy Screen
-        zoomSurface (gameboyScreen, gameboyScreenScaled[scale], scale, scale, 1);
-        SDL_BlitSurface(gameboyScreenScaled[scale],NULL,screen,NULL);
+        //Scale up
+        zoomSurface(gameboyScreen, gameboyScreenScaled, 4, 4, 1);
+        
+        SDL_BlitSurface(gameboyScreenScaled,NULL,screen,NULL);
+        
+        ourMenu.displayMenu(screen);
+        
+        SDL_RenderSetLogicalSize(renderer, 160*4, 144*4);
+        
+        //Effectively a VSync with the computer screen
+        src.x = 0; src.y = 0;
+        src.w = 160*4; src.h = 144*4;
+        
+        SDL_UpdateTexture(screenTexture, &src, screen->pixels, 160 * 4 * sizeof (Uint32));
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, screenTexture, NULL, NULL);
+        SDL_RenderPresent(renderer);
     }
-    
-    //Effectively a VSync with the computer screen
-	//std::cout << std::dec << "Current Tick! " << SDL_GetTicks() << std::endl;
-    SDL_Flip(screen);
 }
 
 void Video::hSync()
@@ -286,7 +320,7 @@ void Video::informVideo(unsigned int address)
             backgroundScrollX = value;
             break;
             
-        //BG & Window Palette Data - BGP - BG Palette Data (R/W) - Non CGB Mode Only
+            //BG & Window Palette Data - BGP - BG Palette Data (R/W) - Non CGB Mode Only
         case 0xFF47:
             for (int place = 0; place < 4; place++)
             {
@@ -366,7 +400,7 @@ void Video::informVideo(unsigned int address)
             r[8] = 255; g[8] = 0; b[8] = 255; //Transparent
             regenVRAM();
             break;
-        
+            
         case 0xFF4A: //Window Y Position
             windowPositionY = value;
             break;

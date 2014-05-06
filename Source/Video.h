@@ -14,7 +14,12 @@
 class Video
 {
 private:
+    SDL_Renderer *renderer;
+    SDL_Texture *screenTexture;
+    SDL_Texture *screenTextureAdvanced;
+    
     SDL_Surface *screen;
+    SDL_Surface *screenAdvanced;
     
     SDL_Surface *vRam;
     unsigned char vRamData[8*384*4*8*8];
@@ -31,7 +36,8 @@ private:
     SDL_Surface *windowScreen;
     SDL_Surface *spriteScreen;
     SDL_Surface *gameboyScreen;
-	SDL_Surface *gameboyScreenScaled[9];
+    
+    SDL_Surface *gameboyScreenScaled;
     
     int r[12], g[12], b[12];
     
@@ -53,10 +59,10 @@ private:
     int spriteChange;
     
     void regenVRAM();
-
+    
 	int overSpeed;
 	int speeding;
-
+    
 	unsigned long frameNumber;
 	unsigned long startGameTime;
     
@@ -80,8 +86,9 @@ public:
     int scale;
     int speedUp;
     int fullscreen;
-
+    
 	void resetFramerate();
+    SDL_Window *screenwindow;
 };
 
 #endif
