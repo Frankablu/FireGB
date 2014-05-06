@@ -1,7 +1,7 @@
-FireGB v0.9
+FireGB v1.0
 
 Install Instructions:
-Install sdl through your package manager
+Install sdl & sdl_ttf through your package manager
 
 make
 su

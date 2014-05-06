@@ -1,7 +1,8 @@
-FireGB v0.9 Mac
+FireGB v1.0 Mac
 
 Install Instructions:
 Install SDL from http://www.libsdl.org/download-1.2.php if not already present
+Install SDL_ttf from https://www.libsdl.org/projects/SDL_ttf/ if not already present
 
 chmod +x macosxinstall.sh
 ./macosxinstall.sh
