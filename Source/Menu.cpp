@@ -336,10 +336,6 @@ void Menu::mouseClick(SDL_MouseButtonEvent *mouse)
                     workingDirectory = workingDirectory.substr(0,workingDirectory.find_last_of("/"));
                     scroll = 0;
                 }
-                else
-                {
-                    workingDirectory = "/";
-                }
                 if (workingDirectory == "")
                 {
                     workingDirectory = "/";
@@ -350,10 +346,10 @@ void Menu::mouseClick(SDL_MouseButtonEvent *mouse)
                     workingDirectory = workingDirectory.substr(0,workingDirectory.find_last_of("\\"));
                     scroll = 0;
                 }
-                else
-                {
-                    workingDirectory = "C:\\";
-                }
+				if (workingDirectory.size() == 2)
+				{
+					workingDirectory.push_back('\\');
+				}
 #endif
 
                 //std::cout << workingDirectory << std::endl;
@@ -385,15 +381,33 @@ void Menu::mouseClick(SDL_MouseButtonEvent *mouse)
 		}
 	}
 #endif
-
-                if (isDirectory)
-                {
-                    workingDirectory.append("/");
+                
+	if (isDirectory)
+	{
+					#ifndef _WIN32
+					if (workingDirectory.at(workingDirectory.size() - 1) != '/')
+					{
+						workingDirectory.append("/");
+					}
+					#else
+					if (workingDirectory.at(workingDirectory.size() - 1) != '\\')
+					{
+						workingDirectory.append("\\");
+					}
+					#endif
                     workingDirectory.append(filename);
+                    if (workingDirectory.at(workingDirectory.size()-1) == '/')
+                    {
+                        workingDirectory.resize(workingDirectory.size()-1);
+                    }
                 }
                 else
                 {
                     //std::cout << "Path: " << fullPath << std::endl;
+                    if (fullPath.at(fullPath.size()-1) == '*')
+                    {
+                        fullPath.at(fullPath.size()-1) = '\0';
+                    }
                     ourCPU.loadrom(fullPath);
                     ourCPU.resetCPU();
                     
@@ -414,12 +428,12 @@ void Menu::mouseClick(SDL_MouseButtonEvent *mouse)
         if (menuState == 5 && x > 50 && y >= 506 && x < 350 && y < 530) //Scroll Down
         {
             clickHandled = true;
-            scroll++;
+            scroll+=10;
         }
         if (menuState == 5 && x >= 350 && y >= 506 && x < 560 && y < 530) //Scroll Up
         {
             clickHandled = true;
-            scroll--;
+            scroll-=10;
             if (scroll < 0)
             {
                 scroll = 0;

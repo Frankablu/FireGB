@@ -231,7 +231,7 @@ inline double audioWave4()
         {
             Sound4SoundPlace = 0;
         }
-        output = Sound4PreGenerated8[Sound4SoundPlace];
+        output = Sound4PreGenerated16[Sound4SoundPlace];
 
     }
     

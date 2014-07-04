@@ -1,6 +1,10 @@
 FireGB Emulator v1.0
 
-Usage: Drag the rom file onto the FireGB program to run
+You may need to install vcredist_x86.exe (included) first
+
+Usage: Run FireGB.exe
+
+Click to bring up the menubar
 
 Keys:
 Arrow Keys
